@@ -62,29 +62,36 @@ sectionContainers.forEach((sectionContainer)=>{
     const list=document.createElement("ul");
     list.classList.add("list");
     sectionContainer.appendChild(list);
-
-    const addButton=document.createElement("button");
-addButton.classList.add("btn");
-addButton.textContent="Ajouter un skill";
-addButton.setAttribute("type","button");
-sectionContainer.appendChild(addButton);
 })
-
-const frontEndButton=document.querySelector(".column:nth-of-type(2) .btn");
-frontEndButton.classList.add("frontEndBtn");
 
 const frontEndList=document.querySelector(".column:nth-of-type(2) .list");
 frontEndList.classList.add("frontEndList");
 
-
-const backEndButton=document.querySelector(".column:nth-of-type(1) .btn");
-backEndButton.classList.add("backEndBtn");
-
 const backEndList=document.querySelector(".column:nth-of-type(1) .list");
 backEndList.classList.add("backEndList");
 
-const addFESkills=document.querySelector(".frontEndBtn");
+const frontEndSection=document.querySelector(".column:nth-of-type(2)");
+const buttonFE=document.createElement("button");
+buttonFE.classList.add("btnFE");
+buttonFE.textContent="Ajouter";
+buttonFE.setAttribute("type","button");
+frontEndSection.appendChild(buttonFE);
 
+const backEndSection=document.querySelector(".column:nth-of-type(1)");
+const divBE=document.createElement("div");
+divBE.classList.add("divBE");
+backEndSection.appendChild(divBE);
+const inputBE=document.createElement("input");
+inputBE.classList.add("inputBE");
+inputBE.setAttribute("type","text");
+divBE.appendChild(inputBE);
+const buttonBE=document.createElement("button");
+buttonBE.classList.add("btnBE");
+buttonBE.textContent="Ajouter";
+buttonBE.setAttribute("type","button");
+divBE.appendChild(buttonBE);
+
+addFESkills=document.querySelector(".btnFE");
 addFESkills.addEventListener("click", function(){
     const input=document.createElement("input");
     input.setAttribute("type","text");
@@ -113,30 +120,13 @@ if(inputValue){
 
 
 
-const addBESkills=document.querySelector(".backEndBtn");
-
+const addBESkills=document.querySelector(".btnBE");
 addBESkills.addEventListener("click", function(){
-    const input=document.createElement("input");
-    input.setAttribute("type","text");
-    input.classList.add("inputBE");
-    input.classList.add("visible");
-    backEndList.appendChild(input);
+ const inputValue=inputBE.value;
+    if(inputValue){
+        const li=document.createElement("li");
+        li.textContent=inputValue;
+        backEndList.appendChild(li);
+        inputBE.value="";}
 
-    const button=document.createElement("button");
-    button.classList.add("visible");
-    button.textContent="Valider";
-    button.setAttribute("type","button");
-    backEndList.appendChild(button); 
-    button.addEventListener("click", function(){
-        const inputValue=input.value; 
-if(inputValue){
-    const li=document.createElement("li");
-    li.textContent=inputValue;
-    backEndList.appendChild(li);
-    input.classList.remove("visible");
-    input.classList.add("hidden");
-    button.classList.remove("visible");
-    button.classList.add("hidden");
-}
-});
 });
