@@ -30,18 +30,33 @@ const initialFirstName = document.getElementById("firstname");
         input.classList.add("visible");
     });
 
-    input.addEventListener('change', function() {
-        const updatedName = input.value;  
-        if (updatedName) {  
-            initialFirstName.textContent = updatedName;  
-            initialFirstName.style.color = "white";
-        }
-        input.classList.remove("visible");
-        input.classList.add("hidden");
+    // chnage background color
+const elementBackgroundToChange = document.querySelectorAll(".pink-bg");
 
+
+// change links color
+
+const links=document.querySelectorAll('a');
+
+
+// change add li element with button and input
+
+input.addEventListener('change', function() {
+    const updatedName = input.value;  
+    if (updatedName) {  
+        initialFirstName.textContent = updatedName;  
+        initialFirstName.style.color = "white";
+    }
+    input.classList.remove("visible");
+    input.classList.add("hidden");
+
+    elementBackgroundToChange.forEach((element) => {
+        element.classList.remove("pink-bg");
+        element.classList.add("purple-bg");
     });
 
-    
+});
+
 
 
 
