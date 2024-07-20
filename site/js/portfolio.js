@@ -1,4 +1,4 @@
-// chnage avatar
+// change avatar
 const avatar=document.querySelector('.avatar');
 
 avatar.addEventListener('click', function(){
