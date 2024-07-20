@@ -39,8 +39,6 @@ const elementBackgroundToChange = document.querySelectorAll(".pink-bg");
 const links=document.querySelectorAll('a');
 
 
-// change add li element with button and input
-
 input.addEventListener('change', function() {
     const updatedName = input.value;  
     if (updatedName) {  
@@ -55,6 +53,10 @@ input.addEventListener('change', function() {
         element.classList.add("purple-bg");
     });
 
+    links.forEach((link) => {
+        link.classList.add("links");
+        console.log(link);
+    });
 });
 
 
