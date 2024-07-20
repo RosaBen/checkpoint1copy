@@ -1,4 +1,4 @@
-// change avatar
+// chnage avatar
 const avatar=document.querySelector('.avatar');
 
 avatar.addEventListener('click', function(){
@@ -9,3 +9,124 @@ avatar.addEventListener('click', function(){
     avatar.alt="avatar-bis";
 });
 
+// change firstname and font color
+const initialFirstName = document.getElementById("firstname");
+
+    const changeButton = document.createElement("button");
+    const description = document.querySelector(".description");
+    changeButton.setAttribute("type", "button");
+    changeButton.textContent = "Change name and background color";
+    changeButton.classList.add("btn", "visible");
+    description.appendChild(changeButton);
+
+    const input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("placeholder", "Entrez votre prénom");
+    input.classList.add("inputName", "hidden");
+    description.appendChild(input);
+
+    changeButton.addEventListener('click', function() {
+        input.classList.remove("hidden");
+        input.classList.add("visible");
+    });
+
+
+// chnage background color
+const elementBackgroundToChange = document.querySelectorAll(".pink-bg");
+input.addEventListener('change', function() {
+    const updatedName = input.value;  
+    if (updatedName) {  
+        initialFirstName.textContent = updatedName;  
+        initialFirstName.style.color = "white";
+    }
+    input.classList.remove("visible");
+    input.classList.add("hidden");
+
+    elementBackgroundToChange.forEach((element) => {
+        element.classList.remove("pink-bg");
+        element.classList.add("purple-bg");
+    });
+});
+
+// change links color
+
+const links=document.querySelectorAll('a');
+links.forEach((link) => {
+    link.classList.add("links");
+});
+
+// add li element with button and input
+
+const sectionContainers=document.querySelectorAll(".column");
+sectionContainers.forEach((sectionContainer)=>{
+    const list=document.createElement("ul");
+    list.classList.add("list");
+    sectionContainer.appendChild(list);
+})
+
+const frontEndList=document.querySelector(".column:nth-of-type(2) .list");
+frontEndList.classList.add("frontEndList");
+
+const backEndList=document.querySelector(".column:nth-of-type(1) .list");
+backEndList.classList.add("backEndList");
+
+const frontEndSection=document.querySelector(".column:nth-of-type(2)");
+const buttonFE=document.createElement("button");
+buttonFE.classList.add("btnFE");
+buttonFE.textContent="Ajouter";
+buttonFE.setAttribute("type","button");
+frontEndSection.appendChild(buttonFE);
+
+const backEndSection=document.querySelector(".column:nth-of-type(1)");
+const divBE=document.createElement("div");
+divBE.classList.add("divBE");
+backEndSection.appendChild(divBE);
+const inputBE=document.createElement("input");
+inputBE.classList.add("inputBE");
+inputBE.setAttribute("type","text");
+divBE.appendChild(inputBE);
+const buttonBE=document.createElement("button");
+buttonBE.classList.add("btnBE");
+buttonBE.textContent="Ajouter";
+buttonBE.setAttribute("type","button");
+divBE.appendChild(buttonBE);
+
+addFESkills=document.querySelector(".btnFE");
+addFESkills.addEventListener("click", function(){
+    const input=document.createElement("input");
+    input.setAttribute("type","text");
+    input.classList.add("inputFE");
+    input.classList.add("visible");
+    frontEndList.appendChild(input);
+
+    const button=document.createElement("button");
+    button.classList.add("visible");
+    button.textContent="Valider";
+    button.setAttribute("type","button");
+    frontEndList.appendChild(button); 
+    button.addEventListener("click", function(){
+        const inputValue=input.value; 
+if(inputValue){
+    const li=document.createElement("li");
+    li.textContent=inputValue;
+    frontEndList.appendChild(li);
+    input.classList.remove("visible");
+    input.classList.add("hidden");
+    button.classList.remove("visible");
+    button.classList.add("hidden");
+}
+});
+});
+
+
+
+const addBESkills=document.querySelector(".btnBE");
+addBESkills.addEventListener("click", function(){
+ const inputValue=inputBE.value;
+    if(inputValue){
+        const li=document.createElement("li");
+        li.textContent=inputValue;
+        backEndList.appendChild(li);
+        inputBE.value="";}
+
+});
